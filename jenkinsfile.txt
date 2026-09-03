@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven-3.9.x'
+        jdk 'JDK-17'
+    }
+
+    stages {
+        stage('Compile') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
+        }
+    }
+}
