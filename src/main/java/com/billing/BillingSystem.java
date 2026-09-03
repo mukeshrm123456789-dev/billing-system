@@ -70,4 +70,3 @@ public class BillingSystem {
         System.out.println("\nThank you for using the Billing System!");
         scanner.close();
     }
-}
